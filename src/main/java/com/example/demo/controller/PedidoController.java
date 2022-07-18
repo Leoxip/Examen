@@ -4,8 +4,8 @@
  */
 package com.example.demo.controller;
 
-import com.example.demo.entity.Cliente;
-import com.example.demo.service.ClienteService;
+import com.example.demo.entity.Pedido;
+import com.example.demo.service.PedidoService;
 import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -22,51 +22,48 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
  *
  * @author CRISTIAN
  */
-
 @Controller
 @RequestMapping("/prod")
-public class ClienteController {
-     @Autowired
-    private ClienteService clienteService;
+public class PedidoController {
+   @Autowired
+    private PedidoService pedidoService;
     
     @GetMapping("/all")
-    public String listarCl(Model model){
-        //String keyword = "Yogurt";
-        model.addAttribute("cliente", clienteService.readAll());
-        return "prod/listarCl";
+    public String listar(Model model){
+        model.addAttribute("pedido", pedidoService.readAll());
+        return "prod/listar";
     }
     
     @GetMapping("/form")
-    public String createCl(Model model){
-        model.addAttribute("titulo", "Registrar Cliente");
-        model.addAttribute("cliente", new Cliente());
-        return "prod/formCl";
+    public String create(Model model){
+        model.addAttribute("titulo", "Registrar Pedido");
+        model.addAttribute("pedido", new Pedido());
+        return "prod/form";
     }
     
     @PostMapping("/add")
-    public String saveCl(@Valid @ModelAttribute Cliente cl, BindingResult result, Model model, RedirectAttributes attributes){
-        clienteService.create(cl);
-        //model.addAttribute("categorias", categoriaService.readAll());
+    public String save(@Valid @ModelAttribute Pedido cl, BindingResult result, Model model, RedirectAttributes attributes){
+        pedidoService.create(cl);
         return "redirect:/prod/all";
     }
     
     @GetMapping("/del/{id}")
-    public String deleteCl(Model model, @PathVariable("id") Integer idcl ){
-        clienteService.delete(idcl);
+    public String delete(Model model, @PathVariable("id") Integer idcl ){
+        pedidoService.delete(idcl);
         return "redirect:/prod/all";
     }
     
     @GetMapping("/edit/{id}")
-    public String editCl(Model model, @PathVariable("id") Integer idcl ){
-        Cliente cliente = clienteService.read(idcl);
-        model.addAttribute("titulo", "Modificar Cliente");
-        model.addAttribute("cliente", cliente);
-        return "prod/formCl";
+    public String edit(Model model, @PathVariable("id") Integer idcl ){
+        Pedido pedido = pedidoService.read(idcl);
+        model.addAttribute("titulo", "Modificar Pedido");
+        model.addAttribute("pedido", pedido);
+        return "prod/form";
     }
     
     @PostMapping("/{id}")
     public String readCl(Model model, @PathVariable("id") Integer idcl ){
-        model.addAttribute("prod", clienteService.read(idcl));
+        model.addAttribute("prod", pedidoService.read(idcl));
         return "redirect:/prod";
     }
     
