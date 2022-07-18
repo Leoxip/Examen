@@ -23,7 +23,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
  * @author CRISTIAN
  */
 @Controller
-@RequestMapping("/prod")
+@RequestMapping("/pedi")
 public class PedidoController {
    @Autowired
     private PedidoService pedidoService;
@@ -31,26 +31,26 @@ public class PedidoController {
     @GetMapping("/all")
     public String listar(Model model){
         model.addAttribute("pedido", pedidoService.readAll());
-        return "prod/listar";
+        return "pedi/listar";
     }
     
     @GetMapping("/form")
     public String create(Model model){
         model.addAttribute("titulo", "Registrar Pedido");
         model.addAttribute("pedido", new Pedido());
-        return "prod/form";
+        return "pedi/form";
     }
     
     @PostMapping("/add")
     public String save(@Valid @ModelAttribute Pedido cl, BindingResult result, Model model, RedirectAttributes attributes){
         pedidoService.create(cl);
-        return "redirect:/prod/all";
+        return "redirect:/pedi/all";
     }
     
     @GetMapping("/del/{id}")
     public String delete(Model model, @PathVariable("id") Integer idcl ){
         pedidoService.delete(idcl);
-        return "redirect:/prod/all";
+        return "redirect:/pedi/all";
     }
     
     @GetMapping("/edit/{id}")
@@ -58,12 +58,12 @@ public class PedidoController {
         Pedido pedido = pedidoService.read(idcl);
         model.addAttribute("titulo", "Modificar Pedido");
         model.addAttribute("pedido", pedido);
-        return "prod/form";
+        return "pedi/form";
     }
     
     @PostMapping("/{id}")
     public String readCl(Model model, @PathVariable("id") Integer idcl ){
-        model.addAttribute("prod", pedidoService.read(idcl));
+        model.addAttribute("pedi", pedidoService.read(idcl));
         return "redirect:/prod";
     }
     

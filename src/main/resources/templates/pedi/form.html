@@ -11,7 +11,7 @@
         <div class="container" layout:fragment="page-content"> 
             <h2 th:text="${titulo}" class="mt-3"></h2>
             <hr>
-            <form th:action="@{/prod/add}" method="post" enctype="multipart/form-data" th:object="${pedido}">                    
+            <form th:action="@{/pedi/add}" method="post" enctype="multipart/form-data" th:object="${pedido}">                    
                 <div class="mb-3">
                     <input type="hidden" th:field="*{idpedido}">
                     <label for="recipient-name" class="col-form-label">Cliente:</label>
@@ -44,7 +44,7 @@
                 </div>
                 
                 
-                <a th:href="@{/prod/all}" class="btn btn-secondary" >Cancel</a>
+                <a th:href="@{/pedi/all}" class="btn btn-secondary" >Cancel</a>
                 <input type="submit" class="btn btn-primary"/>
 
             </form>
