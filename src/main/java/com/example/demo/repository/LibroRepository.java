@@ -9,10 +9,7 @@ import com.example.demo.entity.Libro;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
-/**
- *
- * @author CRISTIAN
- */
+
 @Repository
 public interface LibroRepository extends JpaRepository<Libro, Integer>{
     

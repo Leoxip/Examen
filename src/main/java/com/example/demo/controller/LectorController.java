@@ -1,4 +1,4 @@
-/*
+    /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
@@ -18,10 +18,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-/**
- *
- * @author CRISTIAN
- */
+
 @Controller
 @RequestMapping("/lector")
 public class LectorController {
@@ -42,28 +39,28 @@ public class LectorController {
     }
     
     @PostMapping("/add3")
-    public String save(@Valid @ModelAttribute Lector z, BindingResult result, Model model, RedirectAttributes attributes){
-        lectorService.create(z);
+    public String save(@Valid @ModelAttribute Lector h, BindingResult result, Model model, RedirectAttributes attributes){
+        lectorService.create(h);
         return "redirect:/lector/all3";
     }
     
     @GetMapping("/del3/{id}")
-    public String delete(Model model, @PathVariable("id") Integer idz ){
-        lectorService.delete(idz);
+    public String delete(Model model, @PathVariable("id") Integer idh ){
+        lectorService.delete(idh);
         return "redirect:/lector/all3";
     }
     
     @GetMapping("/edit3/{id}")
-    public String edit(Model model, @PathVariable("id") Integer idz ){
-        Lector lector = lectorService.read(idz);
+    public String edit(Model model, @PathVariable("id") Integer idh ){
+        Lector lector = lectorService.read(idh);
         model.addAttribute("titulo3", "Modificar Lector");
         model.addAttribute("lector", lector);
         return "lector/formlector";
     }
     
     @PostMapping("/{id}")
-    public String read(Model model, @PathVariable("id") Integer idz ){
-        model.addAttribute("lector", lectorService.read(idz));
+    public String read(Model model, @PathVariable("id") Integer idh ){
+        model.addAttribute("lector", lectorService.read(idh));
         return "redirect:/lector";
     }
     

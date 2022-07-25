@@ -16,10 +16,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 
-/**
- *
- * @author CRISTIAN
- */
+
 
 @Data
 @AllArgsConstructor
@@ -36,5 +33,5 @@ public class Lector implements Serializable{
     private String dni;
     private String telefono;
     private String correo;
-     private boolean estado;
+    private boolean estado;
 }

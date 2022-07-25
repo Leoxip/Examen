@@ -17,10 +17,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 
-/**
- *
- * @author CRISTIAN
- */
+
 
 @Data
 @AllArgsConstructor

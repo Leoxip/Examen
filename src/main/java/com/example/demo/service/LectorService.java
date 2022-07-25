@@ -12,10 +12,7 @@ import org.springframework.stereotype.Service;
 
 
 
-/**
- *
- * @author CRISTIAN
- */
+
 @Service
 public class LectorService implements Operaciones<Lector> {
    

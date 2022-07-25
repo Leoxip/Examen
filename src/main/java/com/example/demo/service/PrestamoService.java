@@ -11,10 +11,7 @@ import org.springframework.stereotype.Service;
 import com.example.demo.repository.PrestamoRepository;
 
 
-/**
- *
- * @author CRISTIAN
- */
+
 @Service
 public class PrestamoService implements Operaciones<Prestamo> {
    

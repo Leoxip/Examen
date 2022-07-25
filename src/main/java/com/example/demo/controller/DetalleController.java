@@ -18,10 +18,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-/**
- *
- * @author CRISTIAN
- */
+
 @Controller
 @RequestMapping("/detalle")
 public class DetalleController {
@@ -42,28 +39,28 @@ public class DetalleController {
     }
     
     @PostMapping("/add4")
-    public String save(@Valid @ModelAttribute Detalle z, BindingResult result, Model model, RedirectAttributes attributes){
-        detalleService.create(z);
+    public String save(@Valid @ModelAttribute Detalle e, BindingResult result, Model model, RedirectAttributes attributes){
+        detalleService.create(e);
         return "redirect:/detalle/all4";
     }
     
     @GetMapping("/del4/{id}")
-    public String delete(Model model, @PathVariable("id") Integer idz ){
-        detalleService.delete(idz);
+    public String delete(Model model, @PathVariable("id") Integer ide ){
+        detalleService.delete(ide);
         return "redirect:/detalle/all4";
     }
     
     @GetMapping("/edit4/{id}")
-    public String edit(Model model, @PathVariable("id") Integer idz ){
-        Detalle detalle = detalleService.read(idz);
+    public String edit(Model model, @PathVariable("id") Integer ide){
+        Detalle detalle = detalleService.read(ide);
         model.addAttribute("titulo4", "Modificar Detalle");
         model.addAttribute("detalle", detalle);
         return "detalle/formdetalle";
     }
     
     @PostMapping("/{id}")
-    public String read(Model model, @PathVariable("id") Integer idz ){
-        model.addAttribute("detalle", detalleService.read(idz));
+    public String read(Model model, @PathVariable("id") Integer ide ){
+        model.addAttribute("detalle", detalleService.read(ide));
         return "redirect:/detalle";
     }
     
