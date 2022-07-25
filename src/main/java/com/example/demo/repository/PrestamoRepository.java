@@ -4,7 +4,7 @@
  */
 package com.example.demo.repository;
 
-import com.example.demo.entity.Pedido;
+import com.example.demo.entity.Prestamo;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
@@ -13,6 +13,6 @@ import org.springframework.stereotype.Repository;
  * @author CRISTIAN
  */
 @Repository
-public interface PedidoRepository extends JpaRepository<Pedido, Integer>{
+public interface PrestamoRepository extends JpaRepository<Prestamo, Integer>{
     
 }

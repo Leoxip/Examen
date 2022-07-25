@@ -4,8 +4,8 @@
  */
 package com.example.demo.controller;
 
-import com.example.demo.entity.Pedido;
-import com.example.demo.service.PedidoService;
+import com.example.demo.entity.Prestamo;
+import com.example.demo.service.PrestamoService;
 import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -23,48 +23,48 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
  * @author CRISTIAN
  */
 @Controller
-@RequestMapping("/pedi")
-public class PedidoController {
+@RequestMapping("/prestamo")
+public class PrestamoController {
    @Autowired
-    private PedidoService pedidoService;
+    private PrestamoService prestamoService;
     
     @GetMapping("/all")
     public String listar(Model model){
-        model.addAttribute("pedido", pedidoService.readAll());
-        return "pedi/listar";
+        model.addAttribute("prestamo", prestamoService.readAll());
+        return "prestamo/listar";
     }
     
     @GetMapping("/form")
     public String create(Model model){
-        model.addAttribute("titulo", "Registrar Pedido");
-        model.addAttribute("pedido", new Pedido());
-        return "pedi/form";
+        model.addAttribute("titulo", "Registrar Prestamo");
+        model.addAttribute("prestamo", new Prestamo());
+        return "prestamo/form";
     }
     
     @PostMapping("/add")
-    public String save(@Valid @ModelAttribute Pedido cl, BindingResult result, Model model, RedirectAttributes attributes){
-        pedidoService.create(cl);
-        return "redirect:/pedi/all";
+    public String save(@Valid @ModelAttribute Prestamo cl, BindingResult result, Model model, RedirectAttributes attributes){
+        prestamoService.create(cl);
+        return "redirect:/prestamo/all";
     }
     
     @GetMapping("/del/{id}")
     public String delete(Model model, @PathVariable("id") Integer idcl ){
-        pedidoService.delete(idcl);
-        return "redirect:/pedi/all";
+        prestamoService.delete(idcl);
+        return "redirect:/prestamo/all";
     }
     
     @GetMapping("/edit/{id}")
     public String edit(Model model, @PathVariable("id") Integer idcl ){
-        Pedido pedido = pedidoService.read(idcl);
-        model.addAttribute("titulo", "Modificar Pedido");
-        model.addAttribute("pedido", pedido);
-        return "pedi/form";
+        Prestamo prestamo = prestamoService.read(idcl);
+        model.addAttribute("titulo", "Modificar Prestamo");
+        model.addAttribute("prestamo", prestamo);
+        return "prestamo/form";
     }
     
     @PostMapping("/{id}")
-    public String readCl(Model model, @PathVariable("id") Integer idcl ){
-        model.addAttribute("pedi", pedidoService.read(idcl));
-        return "redirect:/prod";
+    public String read(Model model, @PathVariable("id") Integer idcl ){
+        model.addAttribute("prestamo", prestamoService.read(idcl));
+        return "redirect:/prestamo";
     }
     
 }

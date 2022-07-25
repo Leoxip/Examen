@@ -4,11 +4,12 @@
  */
 package com.example.demo.service;
 
-import com.example.demo.entity.Pedido;
+import com.example.demo.entity.Lector;
+import com.example.demo.repository.LectorRepository;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import com.example.demo.repository.PedidoRepository;
+
 
 
 /**
@@ -16,34 +17,34 @@ import com.example.demo.repository.PedidoRepository;
  * @author CRISTIAN
  */
 @Service
-public class PedidoService implements Operaciones<Pedido> {
+public class LectorService implements Operaciones<Lector> {
    
     @Autowired
-    private PedidoRepository pedidoRepository;
+    private LectorRepository lectorRepository;
     
     @Override
-    public Pedido create(Pedido t) {
-        return pedidoRepository.save(t);    
+    public Lector create(Lector h) {
+        return lectorRepository.save(h);    
     }
 
     @Override
-    public Pedido update(Pedido t) {
-        return pedidoRepository.save(t);
+    public Lector update(Lector h) {
+        return lectorRepository.save(h);
     }
 
     @Override
     public void delete(int id) {
-        pedidoRepository.deleteById(id);
+        lectorRepository.deleteById(id);
     }
 
     @Override
-    public Pedido read(int id) {
-        return pedidoRepository.findById(id).get();
+    public Lector read(int id) {
+        return lectorRepository.findById(id).get();
     }
 
     @Override
-    public List<Pedido> readAll() {
-        return pedidoRepository.findAll();
+    public List<Lector> readAll() {
+        return lectorRepository.findAll();
     }
     
 }
